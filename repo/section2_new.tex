@@ -1,0 +1,111 @@
+\section{\textbf{Conceptual Foundations: Three Domains of Consciousness}}
+\label{sec:conceptual-foundations}
+
+The term \emph{consciousness} is used across philosophy, neuroscience, psychology, and artificial intelligence to denote several different phenomena. These include subjective experience, wakefulness, conscious access, self-awareness, metacognition, reportability, and the integration of information for flexible action \cite{block1995confusion,seth2022theories}. Treating these meanings as interchangeable produces two recurrent errors. First, evidence for one dimension of consciousness is taken as proof of every other dimension. Second, the inability to verify private experience is taken as evidence that no scientifically meaningful consciousness-related capacities can be investigated. To avoid both errors, we divide the problem into three domains: phenomenal consciousness, observable consciousness, and non-emergent consciousness.
+
+These domains are not proposed as three independent substances or competing theories. They identify three different explanatory targets. Phenomenal consciousness concerns whether experience exists for a system. Observable consciousness concerns the capacities through which consciousness is behaviorally or computationally expressed and scientifically investigated. Non-emergent consciousness concerns how those capacities can be progressively produced. The first is primarily ontological, the second epistemic and operational, and the third constructive and developmental.
+
+\subsection{Phenomenal Consciousness}
+\label{subsec:phenomenal-consciousness}
+
+Phenomenal consciousness refers to the subjective character of experience: there being something it is like to see a color, feel pain, remember a person, hear music, or occupy a particular point of view \cite{nagel1974what,chalmers1995facing}. It is the aspect of consciousness most closely associated with qualia and first-person experience. Although phenomenal states may influence speech and behavior, the experience itself is not publicly observable. An investigator can measure neural activity, inspect an artificial system's internal states, or evaluate a subject's report, but none of these observations is identical to directly undergoing the subject's experience.
+
+This produces an epistemic asymmetry between first-person and third-person access. A subject may have direct access to an experience while an external observer has access only to its correlates, consequences, and reports. The scientific study of consciousness therefore depends on inference: researchers compare reported experience with behavioral, physiological, and neural measurements in order to identify reliable correlates and candidate mechanisms \cite{koch2016neural,seth2022theories}. Even among humans, however, the inferred correlate must not be confused with the experience it is intended to track.
+
+The same limitation applies more sharply to artificial systems. A machine's verbal assertion that it is conscious does not prove phenomenality, because such an assertion may be generated without the relevant subjective state. Conversely, the fact that an artificial system is constructed from computational components does not logically demonstrate that phenomenal experience is absent. Current evidence does not resolve this question, and no accepted behavioral or computational test provides direct access to machine phenomenality \cite{chalmers2023llm,butlin2023consciousness}. Phenomenal consciousness should therefore remain an explicit open variable rather than being either automatically attributed or categorically denied.
+
+Let $C_{\mathrm{phen}}(x)$ denote the proposition that a system $x$ possesses phenomenal consciousness. For an external observer, evidence concerning $C_{\mathrm{phen}}(x)$ is necessarily indirect:
+
+\begin{equation}
+E_{\mathrm{phen}}(x)
+=
+\{B_x, R_x, I_x, A_x, H_x\},
+\label{eq:phenomenal-evidence}
+\end{equation}
+
+where $B_x$ represents behavior, $R_x$ self-report, $I_x$ internal organization, $A_x$ architectural properties, and $H_x$ temporal history. These variables may alter the rational credibility assigned to phenomenal consciousness, but they do not transform third-person evidence into first-person access. This is the paper's \emph{Phenomenal Inaccessibility Constraint}: phenomenal consciousness may be investigated through indicators, but it cannot presently be observed directly from outside the experiencing system.
+
+\subsection{Observable Consciousness}
+\label{subsec:observable-consciousness}
+
+Observable consciousness comprises the capacities that can be operationally detected without claiming direct access to phenomenal experience. These capacities include global availability of information, flexible use of represented content, integration across domains, metacognitive monitoring, self-representation, temporally extended memory, context-sensitive reporting, and adaptive control. This category overlaps with access consciousness, global-workspace approaches, higher-order accounts, and indicator-based approaches to artificial consciousness, but it is not restricted to any single theory \cite{block1995confusion,baars1988cognitive,dehaene2011experimental,mashour2020conscious,butlin2023consciousness}.
+
+Observable consciousness must not be equated with verbal report alone. Reports are valuable because they provide structured evidence about what information is available to a system, but report generation also introduces processes associated with attention, decision, working memory, and motor preparation. No-report paradigms were developed partly to distinguish candidate correlates of experience from the additional mechanisms required to report that experience \cite{tsuchiya2015noreport}. For artificial systems, the corresponding lesson is that fluent first-person language is neither necessary nor sufficient evidence of consciousness. Evaluation should instead combine multiple indicators spanning behavior, architecture, internal processing, memory, and adaptation.
+
+We represent observable consciousness as a multidimensional profile rather than a binary label:
+
+\begin{equation}
+\mathbf{C}_{\mathrm{obs}}(x,t)
+=
+\langle W,S,M,G,R,T,A,F\rangle_{x,t},
+\label{eq:observable-profile}
+\end{equation}
+
+where $W$ is world modeling, $S$ self-modeling, $M$ memory, $G$ global accessibility, $R$ recursive or metacognitive representation, $T$ temporal continuity, $A$ adaptive agency, and $F$ affective-relational modeling. The value of each dimension may vary independently and across time. This formulation follows the broader argument that conscious conditions cannot always be represented adequately by a single linear level and are often better characterized across multiple dimensions \cite{bayne2016levels}.
+
+The profile does not imply that every dimension contributes equally or that their conjunction proves phenomenality. Its purpose is operational: it replaces the question ``Is the system conscious?'' with a family of answerable questions. Can the system distinguish its own uncertainty from uncertainty in the environment? Can it preserve a self-model across interactions? Can information from one task become available to reasoning in another? Can it examine and revise an earlier conclusion? Can it integrate consequences over time? Such questions support graded, reproducible comparisons while preventing a single impressive behavior from being treated as decisive.
+
+This yields the \emph{Convergent Observability Principle}: attribution of observable consciousness should increase with the number, independence, persistence, and mechanistic coherence of consciousness-relevant indicators. In schematic form,
+
+\begin{equation}
+\mathcal{O}(x)
+=
+\Phi\!\left(\sum_{i=1}^{n} w_i c_i,
+             \mathcal{D},
+             \mathcal{P},
+             \mathcal{K}\right),
+\label{eq:convergent-observability}
+\end{equation}
+
+where $c_i$ is an indicator, $w_i$ its evidential weight, $\mathcal{D}$ the diversity or relative independence of the indicators, $\mathcal{P}$ their persistence across contexts and time, and $\mathcal{K}$ their mechanistic coherence. Equation~\ref{eq:convergent-observability} is not presented as a completed consciousness metric. It specifies the evidential structure that a later metric should preserve.
+
+\subsection{Non-Emergent Consciousness}
+\label{subsec:non-emergent-consciousness}
+
+The expression \emph{non-emergent consciousness} requires careful qualification. It does not claim that complex systems exhibit no emergent behavior, nor that all properties of a trained model can be predicted directly from its components. It rejects a narrower assumption: that consciousness-relevant organization must be passively awaited as a sudden, indivisible, and unexplained consequence of increasing scale.
+
+On the present account, observable consciousness is constructed when a system acquires and coordinates the functions represented in Equation~\ref{eq:observable-profile}. Some of these functions may appear abruptly in behavioral evaluation, but their appearance can still depend on accumulated changes in representation, optimization, connectivity, memory, and control. Apparent threshold behavior is therefore compatible with an underlying constructive process. A phase transition in measured performance does not by itself establish the spontaneous creation of a new metaphysical property.
+
+This position has precedents in both cognitive science and machine learning. Global-workspace theories explain conscious access through the selective broadcasting of information across otherwise specialized processes \cite{baars1988cognitive,dehaene2011experimental,mashour2020conscious}. The Radical Plasticity Thesis proposes that consciousness-related access is something the brain learns to do through the development of higher-order representations of its own activity \cite{cleeremans2011radical}. The consciousness prior similarly treats conscious processing as an architectural and representational constraint involving selected, low-dimensional, globally useful variables rather than as an unexplained by-product of raw scale \cite{bengio2017consciousness}. These theories differ substantially, but each permits consciousness-relevant organization to be analyzed in terms of mechanisms that can develop, be implemented, or be learned.
+
+We therefore state the \emph{Non-Emergence Principle} as follows:
+
+\begin{quote}
+The observable dimensions associated with consciousness need not be awaited as an unexplained consequence of complexity. They can be progressively constructed by implementing and training mechanisms for integrated representation, global access, memory, self-modeling, metacognition, temporal continuity, affective-relational modeling, and adaptive agency.
+\end{quote}
+
+Let $D$ denote training data, $P$ model capacity, $K$ computational resources, and $\mathcal{A}$ architecture. Increased resources alone do not entail observable consciousness:
+
+\begin{equation}
+(D,P,K) \not\Rightarrow \mathbf{C}_{\mathrm{obs}}.
+\label{eq:scale-insufficient}
+\end{equation}
+
+Instead, observable consciousness depends on resources being organized through relevant architectural mechanisms and learning objectives:
+
+\begin{equation}
+\mathbf{C}_{\mathrm{obs}}
+=
+F(D,P,K,\mathcal{A}_{C},\mathcal{L}_{C},\mathcal{E}),
+\label{eq:constructive-consciousness}
+\end{equation}
+
+where $\mathcal{A}_{C}$ is a consciousness-oriented architecture, $\mathcal{L}_{C}$ represents learning processes that develop its component capacities, and $\mathcal{E}$ represents interaction with an informational environment. Equation~\ref{eq:constructive-consciousness} expresses a research program rather than a sufficiency theorem: the relevant functions must be specified, implemented, and empirically evaluated.
+
+\subsection{Relations Among the Three Domains}
+\label{subsec:domain-relations}
+
+The three domains prevent distinct questions from collapsing into one another. Phenomenal consciousness asks whether experience exists for the system. Observable consciousness asks which consciousness-associated capacities the system demonstrably possesses. Non-emergent consciousness asks how those capacities can be deliberately developed. Evidence in the observable domain can inform judgments about the phenomenal domain, but it cannot deductively settle them. Mechanisms in the non-emergent domain can generate observable capacities, but successful construction does not automatically prove phenomenality.
+
+The relation can be summarized as
+
+\begin{equation}
+\underbrace{\mathcal{M}_{\mathrm{constructive}}}_{\text{non-emergent mechanisms}}
+\longrightarrow
+\underbrace{\mathbf{C}_{\mathrm{obs}}}_{\text{observable profile}}
+\mathrel{\cdots\!\longrightarrow}
+\underbrace{C_{\mathrm{phen}}}_{\text{phenomenal consciousness}},
+\label{eq:three-domain-relation}
+\end{equation}
+
+where the solid arrow denotes a testable causal-engineering relation and the dashed arrow denotes an uncertain evidential relation. The framework therefore preserves the philosophical difficulty of phenomenal consciousness without allowing that difficulty to halt the empirical study or deliberate construction of consciousness-related functions. It provides the conceptual basis for the next question: how can language organize heterogeneous information into a common representational space through which these functions interact?

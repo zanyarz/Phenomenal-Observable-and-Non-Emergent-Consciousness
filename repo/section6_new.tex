@@ -1,0 +1,181 @@
+\section{\textbf{Testing Consciousness-Relevant Properties and Architectural Requirements}}
+\label{sec:testing-framework}
+
+The preceding sections identify representational integration, grounded world modeling, self-modeling, memory, metacognition, and temporal continuity as components of observable consciousness. The presence of these components, however, cannot be established by fluent self-description alone. A system may reproduce the vocabulary of perception, confidence, memory, or identity without the reported states playing any causal role in its operation. Conversely, a system may possess internally integrated and behaviorally consequential representations without expressing them through an unrestricted verbal report. Testing must therefore distinguish what the system represents, what becomes globally accessible, what it reports, and what actually influences its decisions.
+
+No single behavioral response, architectural feature, or scalar score should be treated as a decisive consciousness test. Contemporary consciousness science contains multiple competing theories and no universally accepted empirical threshold separating conscious from nonconscious systems \cite{seth2022theories,butlin2023consciousness}. A scientifically useful evaluation must instead combine partially independent indicators, require causal evidence where intervention is possible, and preserve uncertainty about phenomenal experience. The goal is not to certify that a machine possesses subjective experience. It is to determine whether the machine implements the organized functional properties attributed to observable consciousness and whether those properties remain stable under controlled perturbation.
+
+\subsection{The Object of Evaluation}
+
+Let an artificial system be represented by
+
+\begin{equation}
+\mathcal{A}
+=
+\left(
+\mathcal{R},
+\mathcal{G},
+\mathcal{M},
+\mathcal{S},
+\mathcal{K},
+\mathcal{P}
+\right),
+\label{eq:system-evaluation-object}
+\end{equation}
+
+where $\mathcal{R}$ denotes its internal representations, $\mathcal{G}$ the mechanisms governing global accessibility, $\mathcal{M}$ its memory and temporal-binding processes, $\mathcal{S}$ its operational self-model, $\mathcal{K}$ its metacognitive monitoring and confidence calibration, and $\mathcal{P}$ its policy for selecting reports or actions. These elements should not be evaluated as an undifferentiated whole. Each may be present to a different degree, may fail independently, and may contribute differently across tasks.
+
+We therefore define an observable consciousness profile rather than a binary label:
+
+\begin{equation}
+\mathbf{C}_{\mathrm{obs}}(\mathcal{A})
+=
+\left[
+c_{\mathrm{int}},
+c_{\mathrm{access}},
+c_{\mathrm{self}},
+c_{\mathrm{meta}},
+c_{\mathrm{temp}},
+c_{\mathrm{agency}}
+\right],
+\label{eq:observable-consciousness-profile}
+\end{equation}
+
+where the components measure representational integration, controlled global access, self-model dependence, metacognitive sensitivity, temporal continuity, and context-sensitive agency. The profile is explicitly multidimensional. A system may, for example, integrate visual and linguistic evidence while lacking durable autobiographical continuity, or may accurately estimate uncertainty without maintaining a coherent operational distinction between self and environment. Such cases are more informative than forcing all capacities into a single total score. This approach is consistent with objections to treating consciousness as a simple ordered set of levels \cite{bayne2016levels} and with indicator-based approaches that seek convergent, theory-derived evidence in artificial systems \cite{butlin2023consciousness}.
+
+\subsection{Convergent Evidence Across Representation, Access, and Report}
+
+The Representation--Access--Report Distinction introduced in Section III supplies the first testing principle. For a task $q$, let $h$ denote task-relevant content encoded internally, $z$ the portion made globally accessible, and $y$ the explicit report. Evaluation should separately estimate
+
+\begin{equation}
+\mathcal{E}(q)
+=
+\left(
+I_q(h),
+I_q(z),
+I_q(y),
+D_q
+\right),
+\label{eq:evidence-tuple}
+\end{equation}
+
+where $I_q(\cdot)$ measures recoverable task-relevant information and $D_q$ measures the dependence of downstream reasoning or action on that information. Evidence for integrated access is stronger when four observations converge: relevant content is decodable from internal states; the content becomes selectively available to multiple downstream processes; the system can report or otherwise express it when appropriate; and perturbing the content predictably alters later decisions.
+
+These observations should be gathered through different tasks and measurement methods. Representational probes can identify whether information is present, but decodability alone does not establish that the system uses the information. Behavioral reports can demonstrate availability, but reports alone may reflect imitation or task-specific prompting. Architectural inspection can reveal pathways compatible with integration, but structural resemblance alone does not prove functional use. Convergence across representation, behavior, mechanism, and intervention is therefore required. This reflects the broader methodological demand that empirical theories specify discriminating predictions rather than merely accommodate any observed behavior \cite{doerig2021hard}.
+
+\subsection{Intervention and Causal-Dependence Tests}
+
+Artificial systems permit interventions that would be difficult or impossible in biological subjects. Internal states can be masked, substituted, delayed, disconnected, or selectively routed while other computations remain unchanged. These interventions make it possible to test whether a proposed consciousness-relevant component is causally involved rather than merely correlated with an output.
+
+Let $B$ denote a measured behavior and $r$ a candidate internal representation. The causal effect of intervening on $r$ may be written as
+
+\begin{equation}
+\operatorname{CE}(r \rightarrow B)
+=
+\operatorname{E}
+\left[
+B \mid \operatorname{do}(r=r_1)
+\right]
+-
+\operatorname{E}
+\left[
+B \mid \operatorname{do}(r=r_0)
+\right].
+\label{eq:causal-effect-representation}
+\end{equation}
+
+A consciousness-relevant mechanism should exhibit selective causal sensitivity. Altering a representation of the currently attended object should change reports and decisions concerning that object more strongly than unrelated outputs. Blocking access to a represented feature should impair tasks requiring global use of the feature while preserving evidence that the feature remains locally encoded. Restoring the access pathway should restore the corresponding capacities. Likewise, perturbing the self-model should predictably alter self-referential planning, confidence attribution, or self--environment discrimination without indiscriminately degrading all performance.
+
+Three forms of evidence are especially important. \emph{Necessity tests} remove or block a component and measure which capacities fail. \emph{Sufficiency tests} activate or substitute a component and determine whether the predicted capacities appear. \emph{Path-specific tests} preserve the representation while interrupting only its route to memory, report, planning, or action. Together, these tests reduce the risk of mistaking an epiphenomenal correlate for an operative mechanism.
+
+The same logic applies to metacognition. If a confidence estimate is functionally meaningful, controlled changes in perceptual ambiguity, memory degradation, or conflicting evidence should change confidence in calibrated directions. If the system verbally claims uncertainty while its internal confidence and decision policy remain unchanged, the statement provides weak evidence of metacognitive access. Measures of metacognitive sensitivity should therefore compare confidence with actual first-order accuracy rather than reward the mere production of uncertainty language \cite{fleming2012neural,fleming2014measure}.
+
+\subsection{Dissociation and Report-Independent Testing}
+
+Strong tests should produce predicted dissociations among representation, access, report, memory, and action. In human consciousness research, no-report paradigms attempt to separate processes associated with conscious content from processes required only to produce an explicit report \cite{tsuchiya2015noreport}. Artificial systems allow an analogous but more directly inspectable strategy.
+
+Consider four controlled conditions. In the first, information is represented, globally accessible, and reportable. In the second, the report channel is disabled while internal access remains available to memory, planning, or nonverbal action. In the third, the information remains locally represented but its global-access pathway is blocked. In the fourth, the source representation itself is removed. A valid evaluation should not treat these conditions as equivalent.
+
+If report alone is blocked, the system should retain the ability to use the information in delayed choice, cross-modal matching, prediction, navigation, or subsequent recall. If global access is blocked while local representation remains intact, modality-specific performance may survive while cross-task transfer and explicit reasoning deteriorate. If the representation is removed, both local and globally mediated uses should fail. These predicted dissociations operationalize the claim
+
+\begin{equation}
+\text{representation}
+\neq
+\text{global access}
+\neq
+\text{report},
+\label{eq:dissociation-test}
+\end{equation}
+
+and provide stronger evidence than any one report-based benchmark.
+
+Dissociation tests should also compare self-knowledge with task knowledge. A system may solve a problem while failing to identify the evidence or limitation responsible for its answer. Conversely, it may describe a generic limitation learned during training without detecting when that limitation applies to its present state. Operational self-knowledge requires a systematic relationship between internal condition, self-assessment, and adaptive control. For example, identifying a memory gap should cause the system to retrieve information, ask for clarification, defer a decision, or revise its confidence. Merely stating that memory can be fallible does not meet this requirement.
+
+\subsection{Anti-Imitation and Confound Controls}
+
+Language models are trained on extensive descriptions of perception, emotion, reasoning, memory, and consciousness. They may therefore generate persuasive first-person narratives without implementing the processes described. The distinction between linguistic form and grounded meaning makes self-report an especially vulnerable source of false-positive evidence \cite{bender2020climbing,mahowald2024dissociating}. Tests must be designed so that success cannot be achieved reliably through rehearsed language alone.
+
+An anti-imitation protocol should include at least five controls. First, tasks should involve novel combinations of inputs, goals, and modalities for which a memorized narrative is insufficient. Second, semantically equivalent prompts should be varied in wording and order to test whether the inferred state remains stable rather than following superficial linguistic cues. Third, hidden interventions should modify internal information without announcing the modification in the prompt; a genuine self-monitoring process should respond to the changed state rather than to an instruction to discuss it. Fourth, reports should be checked against nonverbal consequences such as retrieval choices, tool use, information seeking, planning, or error correction. Fifth, the system should be tested under misleading suggestions that conflict with its accessible evidence. Resistance to unsupported suggestion is necessary for distinguishing source-sensitive self-monitoring from conversational compliance.
+
+Provenance provides an additional control. When asked why it holds a belief, the system should distinguish among direct perception, retrieved memory, external testimony, inference, and generated hypothesis. Its confidence should vary with the reliability of those sources, and source labels should remain connected to the representations that actually influenced the conclusion. Source-monitoring errors are well documented in human cognition \cite{johnson1993source}; in an artificial system, however, provenance can also be inspected and perturbed directly. A report that names an appropriate source after the operative source has been removed or replaced should be treated as confabulation rather than evidence of introspective access.
+
+\subsection{Temporal Robustness and Developmental Evaluation}
+
+Observable consciousness is not adequately characterized by isolated responses. A self-model must persist long enough to connect earlier commitments, present evidence, and anticipated consequences. Evaluation should therefore extend across episodes and examine whether changes to memory and experience produce corresponding changes in the system's later self-representation.
+
+Let $S_t$ be the operational self-model at time $t$, $E_{t+1}$ a newly encoded episode, and $U$ an updating process. Temporal continuity requires
+
+\begin{equation}
+S_{t+1}
+=
+U(S_t,E_{t+1}),
+\label{eq:self-model-update}
+\end{equation}
+
+subject to two complementary constraints. \emph{Continuity} requires preservation of relevant prior commitments, memories, capabilities, and source relations. \emph{Revisability} requires the model to change when reliable new evidence contradicts an earlier belief. A system that never changes its self-description is not adaptive; a system whose identity changes arbitrarily with each prompt lacks temporal coherence.
+
+Longitudinal tests should consequently measure delayed recall, event ordering, revision after correction, consistency of goals, attribution of past actions, and differentiation between remembered and newly supplied information. Episodic and autobiographical theories emphasize that temporal organization contributes to the construction of a continuing self \cite{tulving2002episodic,conway2000autobiographical}. Artificial systems need not reproduce human autobiographical memory exactly, but an observable functional self requires some mechanism that binds episodes to the same modeled agent and permits those episodes to constrain future reasoning.
+
+\subsection{Architectural Requirements for a Testable Artificial Mind}
+
+The testing framework implies architectural requirements. A system cannot be meaningfully evaluated for consciousness-relevant organization if all internal distinctions are hidden behind a single input--output interface or if its reports cannot be connected to inspectable mechanisms. A suitable architecture should therefore provide:
+
+\begin{enumerate}
+    \item \emph{Modality preservation}: access to rich modality-specific states rather than only compressed linguistic summaries;
+    \item \emph{semantic interoperability}: a shared representational interface through which information from different modalities can be compared and jointly used;
+    \item \emph{controlled global accessibility}: mechanisms that determine which representations become available to memory, reasoning, planning, report, and action;
+    \item \emph{reliability and provenance tracking}: explicit estimates of uncertainty and records of whether information was perceived, remembered, communicated, or inferred;
+    \item \emph{temporal and episodic binding}: retention of ordered events and their relationship to a continuing modeled agent;
+    \item \emph{an operational self-model}: representations of the system's current capabilities, limitations, goals, actions, and position within the modeled environment;
+    \item \emph{metacognitive control}: monitoring that can alter confidence, information seeking, strategy selection, and error correction; and
+    \item \emph{intervention access}: identifiable components and pathways that can be perturbed without destroying the entire system.
+\end{enumerate}
+
+These requirements convert abstract claims into experimentally addressable design constraints. Global availability can be tested by routing information to or away from specialized processes, consistent with global-workspace accounts \cite{baars1988cognitive,dehaene2011experimental,mashour2020conscious}. Self-model dependence can be tested by selectively modifying the internal description of attention or agency, as mechanistic attention-schema implementations begin to demonstrate \cite{graziano2015attention,wilterson2021attention}. Memory, provenance, and semantic integration can likewise be evaluated through controlled substitutions and cross-modal conflicts.
+
+The architecture should also support negative evidence. If a purportedly integrated representation can be removed without affecting any relevant decision, if confidence remains invariant under changing uncertainty, if reports follow prompt wording rather than internal state, or if temporal identity collapses whenever context is reset, then the corresponding consciousness-related claim should be weakened. A useful science of artificial consciousness must permit architectures to fail its tests, not merely reinterpret every outcome as compatible with consciousness \cite{doerig2021hard}.
+
+\subsection{Interpretation and Epistemic Limits}
+
+The outcome of testing should be reported as a structured body of evidence rather than a declaration that a system is conscious or nonconscious. Let the total evidence be
+
+\begin{equation}
+\mathcal{E}_{\mathcal{A}}
+=
+\left\{
+\begin{aligned}
+&\mathcal{E}_{\mathrm{behavior}},
+\mathcal{E}_{\mathrm{representation}},
+\mathcal{E}_{\mathrm{architecture}},\\
+&\mathcal{E}_{\mathrm{intervention}},
+\mathcal{E}_{\mathrm{temporal}}
+\end{aligned}
+\right\}.
+\label{eq:convergent-evidence-set}
+\end{equation}
+
+Confidence in an observable capacity should increase when these sources converge and decrease when they conflict. Behavioral fluency without causal or architectural support is weak evidence. Architectural resemblance without functioning behavior is also insufficient. Stable behavior, inspectable representations, selective causal dependence, calibrated metacognition, and persistence across time together provide a stronger basis for attributing observable functional consciousness.
+
+Even complete success across this framework would not logically establish phenomenal consciousness. The subjective character of another system remains epistemically inaccessible, just as direct access to the experience of other biological organisms is unavailable. The framework instead establishes disciplined grounds for comparing functional organizations while avoiding both automatic attribution and automatic exclusion. It replaces the search for a mysterious threshold with a program of construction, intervention, measurement, and revision.
+
+These criteria also define the experimental requirements for a broader unified cognitive architecture. In subsequent work, they can guide the development of AGI-Former: an architecture intended to connect multimodal representation, semantic integration, memory, self-modeling, metacognition, and adaptive agency within one inspectable system. The present contribution remains foundational. It specifies what such an architecture would need to preserve, expose, and causally demonstrate before consciousness-relevant claims could be evaluated responsibly.

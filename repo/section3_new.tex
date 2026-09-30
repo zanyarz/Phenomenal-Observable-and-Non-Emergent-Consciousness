@@ -1,0 +1,192 @@
+\section{\textbf{Language as a Unifying Semantic Interface}}
+\label{sec:language-interface}
+
+If observable consciousness depends on information becoming integrated, retained, examined, and used across cognitive processes, then an artificial system requires a medium through which heterogeneous representations can become mutually accessible. Vision, sound, motion, affective signals, memory, and symbolic input differ in structure and informational content. A visual representation does not naturally possess the same form as an auditory sequence or a linguistic proposition. Nevertheless, a unified cognitive system must be able to relate them: an observed face may be connected to a remembered name, an emotional history, a spoken sentence, and an anticipated action. This section argues that language---understood broadly as a compositional semantic system rather than merely a stream of written tokens---is the most useful known interface for enabling such integration.
+
+This claim is deliberately narrower than the proposition that all thought is linguistic. Neuropsychological and neuroimaging evidence supports a dissociation between language and several forms of reasoning, including numerical, spatial, social, and abstract cognition \cite{fedorenko2016language,fedorenko2024communication}. Language is therefore neither necessary for every cognitive operation nor sufficient for consciousness. Its importance in the present framework derives instead from four properties: it is compositional, abstractable, recursively applicable, and communicable. These properties allow language to identify relations among otherwise distinct representational systems, preserve conclusions across time, and expose selected contents to reflection, comparison, planning, and report.
+
+\subsection{One Cognitive System, Multiple Representational Channels}
+\label{subsec:multiple-representational-channels}
+
+Multimodal cognition does not require every modality to be converted completely into words. Such a conversion would discard information for which no concise linguistic equivalent exists. The exact texture of a surface, the spatial distribution of objects in a scene, the timbre of a voice, or the continuous dynamics of movement may be represented with greater fidelity in modality-specific spaces than in a sentence. Grounded accounts of cognition similarly emphasize that conceptual knowledge remains connected to perceptual, motor, and bodily systems \cite{barsalou2008grounded}. The symbol-grounding problem further cautions that symbols cannot acquire intrinsic reference merely by being related to other ungrounded symbols \cite{harnad1990symbol}.
+
+Language should consequently be treated as an interface over perceptual and conceptual representations, not as a replacement for them. Let $x_m$ denote an input from modality $m$, and let $E_m$ be a modality-specific encoder. The encoder produces
+
+\begin{equation}
+h_m = E_m(x_m),
+\label{eq:modality-encoding}
+\end{equation}
+
+where $h_m$ retains structures useful within the modality. A learned projection $P_m$ then maps relevant content into a shared, language-aligned semantic space:
+
+\begin{equation}
+z_m = P_m(h_m), \qquad z_m \in \mathcal{Z}_{S}.
+\label{eq:semantic-projection}
+\end{equation}
+
+The shared space $\mathcal{Z}_{S}$ need not consist of literal natural-language sentences. It may contain continuous embeddings, structured concepts, relations, uncertainty estimates, and attention-addressable features. Its defining property is semantic interoperability: content contributed by one modality can be related to, queried by, and used together with content contributed by another.
+
+Empirical machine-learning systems already demonstrate parts of this pattern. Contrastive vision--language training permits natural-language expressions to reference learned visual concepts and supports transfer to previously unseen visual categories \cite{radford2021clip}. Joint embedding approaches have extended cross-modal alignment beyond image and text to audio, depth, thermal signals, and inertial measurements \cite{girdhar2023imagebind}. These systems do not establish consciousness, but they demonstrate that heterogeneous sensory representations can be made mutually addressable through a shared representational geometry.
+
+We call this the \emph{Semantic Interface Principle}:
+
+\begin{quote}
+A modality can participate in unified cognition when its internally represented content can be selectively projected into a shared semantic space without requiring the complete elimination of its modality-specific structure.
+\end{quote}
+
+The principle allows language to unify information without claiming that language exhausts experience.
+
+\subsection{The Image-Captioning Pattern}
+\label{subsec:image-captioning-pattern}
+
+Vision--language and image-captioning models provide a concrete computational example. In simplified form, an image-captioning system performs the sequence
+
+\begin{equation}
+I
+\xrightarrow{E_v}
+h_v
+\xrightarrow{P_{v\rightarrow s}}
+z_v
+\xrightarrow{D_l}
+y_{\mathrm{text}},
+\label{eq:image-captioning-sequence}
+\end{equation}
+
+where $I$ is an image, $E_v$ is a visual encoder, $h_v$ is a rich visual representation, $P_{v\rightarrow s}$ maps selected information into a language-aligned semantic representation $z_v$, and the language decoder $D_l$ produces an observable textual report $y_{\mathrm{text}}$.
+
+The three representational stages after the image are not equivalent. The visual encoder may preserve spatial organization, object features, textures, colors, region-level relationships, and uncertainty that never appear in the generated caption. The projected representation makes some of that content accessible to linguistic processing, while the final output expresses only a context-dependent selection. Thus,
+
+\begin{equation}
+h_v \neq z_v \neq y_{\mathrm{text}}.
+\label{eq:representation-nonidentity}
+\end{equation}
+
+This distinction is central to the present theory. The generated caption is an observable report about an internal perceptual representation; it is not the representation in its entirety. The architecture therefore provides a computational analogue of the distinction among internally available perceptual content, access to selected content, and explicit report. The analogy does not establish that the encoder state is phenomenally experienced. It provides an inspectable organization through which relations among representation, access, and report can be experimentally studied.
+
+The pattern generalizes across modalities:
+
+\begin{equation}
+x_m
+\xrightarrow{E_m}
+h_m
+\xrightarrow{P_m}
+z_m
+\xrightarrow{D_l}
+y_m,
+\qquad m \in \mathcal{M},
+\label{eq:general-modality-sequence}
+\end{equation}
+
+where $\mathcal{M}$ may include vision, audition, motion, depth, touch, affective signals, or other informational channels. A unified system should have access not only to the reports $y_m$ but also to the language-aligned states $z_m$ and, when required, the richer modality-specific states $h_m$.
+
+Accordingly, the appropriate input to a consciousness-oriented multimodal architecture is not merely a collection of captions. It is a structured set of representations:
+
+\begin{equation}
+\mathcal{R}_{m}
+=
+\{h_m,z_m,y_m,u_m,o_m\},
+\label{eq:modality-record}
+\end{equation}
+
+where $u_m$ represents uncertainty associated with the modality and $o_m$ records provenance---whether a proposition was directly encoded, linguistically reported, remembered, or inferred. Preserving these distinctions is necessary if the system is to reason about the origin and reliability of its own beliefs.
+
+\subsection{Language as Semantic Compression and Global Addressing}
+\label{subsec:semantic-compression}
+
+Natural language compresses high-dimensional experience into relatively compact structures. A sentence can identify entities, properties, causal relations, temporal order, counterfactual possibilities, and social intentions without reproducing every sensory detail from which those conclusions were derived. This compression makes language efficient for memory, communication, abstraction, and coordination. Inner speech likewise supports planning, self-regulation, working memory, and reflective cognition, although its prevalence and form vary across individuals and tasks \cite{aldersonday2015inner}.
+
+Linguistic data also preserve information about the world because human language is produced by embodied agents who describe their perceptions, actions, conventions, and causal interactions. Distributional relations among words can therefore reflect regularities inherited indirectly from human experience. The symbol-interdependency hypothesis argues that symbolic and embodied sources of meaning can reinforce one another rather than functioning as mutually exclusive explanations \cite{louwerse2011symbol}. Likewise, models combining experiential and distributional information have produced semantic representations that better approximate human judgments than either source alone \cite{andrews2009integrating}.
+
+Language may therefore supply \emph{indirect grounding}: it transmits structured consequences of other agents' contact with the world. Indirect grounding is meaningful but incomplete. A text-trained system may learn that glass is fragile, that grief changes behavior, or that unsupported objects fall; however, the linguistic representation is not identical to seeing glass shatter, interacting with a grieving person, or predicting physical motion from continuous perception. Direct multimodal grounding can constrain, enrich, and sometimes correct the knowledge inherited from language.
+
+Within a unified architecture, language-aligned semantics can function as a global addressing system. A linguistic or language-like query can retrieve relevant content from different modality stores, connect present input with episodic memory, and express a relation that becomes available to planning and metacognitive evaluation. This resembles the global-access intuition that selected information becomes broadly available to otherwise specialized processes \cite{baars1988cognitive,dehaene2011experimental,mashour2020conscious}. Language is not itself the global workspace; it is a particularly capable representational protocol through which globally available content can be indexed, combined, and reported.
+
+\subsection{Preservation, Projection, and Information Loss}
+\label{subsec:preservation-projection-loss}
+
+Every projection creates the possibility of information loss. If a visual state $h_v$ is reduced to a caption such as ``a person standing near a vehicle,'' the report may omit identity, gaze direction, lighting, distance, emotional expression, background motion, and uncertainty. Some omitted information may be irrelevant to the current task, while other omitted information may later become decisive. A system that retains only the caption cannot reconsider details that the report discarded.
+
+For this reason, we introduce the \emph{Dual-Preservation Constraint}:
+
+\begin{quote}
+A unified multimodal architecture should preserve both modality-specific representations and their language-aligned semantic projections. Global accessibility must not require irreversible textual reduction.
+\end{quote}
+
+For every modality $m$, the architecture should therefore retain two complementary paths:
+
+\begin{equation}
+\underbrace{h_m}_{\text{modality-preserving path}}
+\qquad\text{and}\qquad
+\underbrace{z_m}_{\text{semantic-access path}}.
+\label{eq:dual-path}
+\end{equation}
+
+The modality-preserving path maintains information that may not yet be expressible or relevant. The semantic-access path exposes selected content to cross-modal integration, linguistic reasoning, memory indexing, and report. Bidirectional attention between these paths permits the system to return to the source representation when a semantic summary proves incomplete.
+
+This architecture also creates testable quantities. Let $q$ denote a query or task. The information selected from modality $m$ can be written as
+
+\begin{equation}
+z_m^{(q)} = P_m(h_m;q).
+\label{eq:query-conditioned-projection}
+\end{equation}
+
+Changing $q$ should alter which components of $h_m$ become globally accessible without requiring the original input to be encoded again. The difference between the information recoverable from $h_m$ and from $y_m$ measures the cost of report-level compression:
+
+\begin{equation}
+\Delta_m(q)
+=
+\operatorname{Perf}(q\mid h_m)
+-
+\operatorname{Perf}(q\mid y_m).
+\label{eq:report-compression-gap}
+\end{equation}
+
+A large positive $\Delta_m(q)$ indicates that the internal modality representation contains task-relevant information absent from the explicit report. This provides an experimental means of distinguishing representational possession from linguistic expression.
+
+\subsection{Beyond Linguistic Imitation}
+\label{subsec:beyond-linguistic-imitation}
+
+The distinction among $h_m$, $z_m$, and $y_m$ also prevents fluent language from being mistaken for integrated understanding. A system trained exclusively to predict linguistic form may produce plausible statements without possessing the perceptual, causal, or self-monitoring structures attributed to it. Arguments separating form from meaning and linguistic competence from general reasoning make this limitation explicit \cite{bender2020climbing,mahowald2024dissociating}. The dissociation of language and thought in humans reinforces the same conclusion \cite{fedorenko2024communication}.
+
+The relevant test is therefore not whether a model can describe a conscious process. It is whether its reports are causally and systematically connected to inspectable internal representations. If a visual feature is removed from $h_v$, the corresponding report and downstream reasoning should change. If information remains in $h_v$ but is temporarily blocked from $z_v$, the system should behave as though the content is represented but not globally accessible. If attention is redirected, the system should be able to produce a revised report by retrieving previously unreported information. Such interventions distinguish a grounded representational process from an unconstrained verbal performance.
+
+We call this the \emph{Representation--Access--Report Distinction}:
+
+\begin{equation}
+\text{represented content}
+\neq
+\text{globally accessible content}
+\neq
+\text{reported content}.
+\label{eq:representation-access-report}
+\end{equation}
+
+This distinction is experimentally valuable because each stage can be measured and manipulated in an artificial system. It does not solve the problem of phenomenal consciousness, but it provides a controlled platform for studying computational relations often associated with conscious perception.
+
+\subsection{Implications for Artificial Consciousness}
+\label{subsec:language-consciousness-implications}
+
+Language contributes to observable consciousness when it enables representations to become mutually accessible, temporally persistent, recursively examinable, and available for adaptive action. It can name internal states, distinguish observation from inference, preserve conclusions in memory, express uncertainty, compare incompatible interpretations, and coordinate specialized subsystems. Through these functions, language provides more than communication with an external user: it becomes an internal protocol for cognitive coordination.
+
+The resulting position lies between two extremes. It rejects linguistic reductionism because modality-specific representations contain information that cannot be fully preserved in text. It also rejects the conclusion that language is merely superficial output. Language can organize access to knowledge, transmit experience-derived structure, support self-examination, and make selected information globally usable. Its role is therefore neither exclusive nor incidental.
+
+The framework developed in this section can be summarized as
+
+\begin{equation}
+\mathcal{C}_{\mathrm{interface}}
+=
+\left(
+\{E_m\}_{m\in\mathcal{M}},
+\{h_m\}_{m\in\mathcal{M}},
+\{P_m\}_{m\in\mathcal{M}},
+\mathcal{Z}_{S},
+D_l,
+\mathcal{G}
+\right),
+\label{eq:semantic-interface-architecture}
+\end{equation}
+
+where the modality encoders $E_m$ produce preserved internal states $h_m$, the projections $P_m$ expose selected content through the shared semantic space $\mathcal{Z}_{S}$, the decoder $D_l$ generates explicit reports, and $\mathcal{G}$ denotes the mechanism through which semantic content becomes globally accessible to memory, reasoning, self-modeling, and action.
+
+This organization supplies the conceptual bridge to multimodal grounding and unified representation. A future architecture need not wait for integration to arise accidentally from scale. It can explicitly preserve modality-specific states, align their meanings, control their accessibility, compare their reports, and measure what is gained or lost during translation. The next section develops the requirements for that shared multimodal representation and its role in constructing a coherent world model.
+

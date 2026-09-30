@@ -1,0 +1,218 @@
+\section{\textbf{Multimodal Grounding and Integrated World Representation}}
+\label{sec:multimodal-grounding}
+
+Language can make heterogeneous information semantically accessible, but linguistic accessibility alone does not produce a grounded or coherent world model. A system may associate words with other words while remaining unable to determine which representations arose from perception, which were supplied by another agent, which were retrieved from memory, and which were generated through inference. Multimodal grounding addresses this limitation by connecting semantic structures to complementary sources of information and by constraining interpretation through their agreement, disagreement, reliability, and temporal organization.
+
+The purpose of multimodal integration is not to accumulate independent descriptions of the same environment. It is to construct a coherent representation in which different channels inform one another while retaining their distinct evidential roles. Biological multisensory processing demonstrates that information from separate senses can be combined to improve detection and interpretation of behaviorally relevant events \cite{stein2008multisensory}. Human observers can also weight visual and haptic information according to their relative reliability, producing estimates consistent with statistically efficient cue combination \cite{ernst2002humans}. These findings motivate an artificial framework in which modalities are neither isolated nor treated as equally reliable by default.
+
+\subsection{Grounding Through Complementary Constraints}
+\label{subsec:complementary-grounding}
+
+Let $\mathcal{M}$ denote the set of available modalities. For each modality $m\in\mathcal{M}$, Section~\ref{sec:language-interface} defined a preserved modality state $h_m$, a language-aligned semantic projection $z_m$, uncertainty $u_m$, and provenance $o_m$. At time $t$, the multimodal evidence state is
+
+\begin{equation}
+\mathcal{E}^{(t)}
+=
+\left\{
+\left(h_m^{(t)},z_m^{(t)},u_m^{(t)},o_m^{(t)}\right)
+\right\}_{m\in\mathcal{M}}.
+\label{eq:multimodal-evidence-state}
+\end{equation}
+
+Grounding occurs when a semantic representation is constrained by its systematic relations to perceptual input, action, memory, and other independently obtained evidence. An object's linguistic identity may be supported by its visual appearance, the sound it produces, its motion, prior encounters, and the consequences of interacting with it. No single modality must contain the complete concept. Meaning can be stabilized through the relations among modalities.
+
+This view combines two sources of semantic structure. Distributional learning captures regularities in how concepts are used and related in language, whereas experiential learning captures relations derived from perception and interaction. Evidence that their joint use improves semantic representation supports a complementary rather than exclusive account \cite{andrews2009integrating,louwerse2011symbol}. Modern vision--language and multimodal embedding systems provide computational demonstrations that language can align with perceptual representations and that several modalities can occupy a mutually addressable space \cite{radford2021clip,girdhar2023imagebind}.
+
+We define the \emph{Complementary Grounding Principle}:
+
+\begin{quote}
+A semantic representation becomes more strongly grounded as independently obtained perceptual, temporal, interactive, and linguistic evidence places mutually consistent constraints on its interpretation.
+\end{quote}
+
+The principle does not require every concept to be directly experienced. Abstract concepts may be grounded through relations to other grounded concepts, linguistic practices, social interactions, and their observable consequences. It does require the system to preserve the distinction between direct and indirect support.
+
+\subsection{Alignment Without Representational Collapse}
+\label{subsec:alignment-without-collapse}
+
+A shared semantic space is useful only if alignment does not erase information unique to each modality. Consider spoken language accompanying a visual scene. The audio stream contains prosody, speaker identity, timing, and background sounds; the visual stream contains spatial relations, expressions, gestures, and objects; the transcript contains lexical and propositional content. Their semantic projections may refer to the same event, but their internal structures remain non-identical.
+
+We therefore distinguish \emph{alignment} from \emph{collapse}. Alignment establishes correspondences among representations:
+
+\begin{equation}
+\mathcal{A}_{mn}^{(t)}
+=
+\operatorname{Align}
+\left(z_m^{(t)},z_n^{(t)}\right),
+\label{eq:crossmodal-alignment}
+\end{equation}
+
+where $\mathcal{A}_{mn}^{(t)}$ estimates the semantic and temporal relationship between modalities $m$ and $n$. Collapse would instead replace the contributing states with a single reduced representation from which their unique information could not be recovered. The Dual-Preservation Constraint introduced in Section~\ref{sec:language-interface} prohibits this irreversible reduction.
+
+An integrated representation should consequently preserve both shared and private components:
+
+\begin{equation}
+r_m^{(t)}
+=
+\left(s_m^{(t)},p_m^{(t)}\right),
+\label{eq:shared-private-components}
+\end{equation}
+
+where $s_m^{(t)}$ contains content aligned with other modalities and $p_m^{(t)}$ contains modality-specific information. The shared components permit cross-modal reasoning; the private components permit the system to revisit sensory detail, identify the source of a conclusion, and revise a semantic interpretation without re-observing the original event.
+
+This produces a \emph{Differentiated Unity Requirement}: multimodal integration must increase coordination among modalities without eliminating the representational differences that make their evidence complementary. Unity without differentiation creates an information bottleneck; differentiation without unity creates disconnected processing. A consciousness-oriented architecture requires both.
+
+\subsection{Reliability-Weighted Integration}
+\label{subsec:reliability-weighted-integration}
+
+Modalities differ in reliability across conditions. Vision may be degraded by darkness, audio by noise, language by ambiguity, and memory by temporal distance. A unified system should therefore avoid treating every contribution as equally authoritative. Let $\rho_m^{(t)}$ denote the estimated reliability of modality $m$ at time $t$. A preliminary integrated semantic state can be written as
+
+\begin{equation}
+g^{(t)}
+=
+\mathcal{F}
+\left(
+\left\{
+\rho_m^{(t)} z_m^{(t)}
+\right\}_{m\in\mathcal{M}}
+\right),
+\label{eq:reliability-fusion}
+\end{equation}
+
+where $\mathcal{F}$ is a learned integration process rather than necessarily a linear weighted average. Reliability should depend on signal quality, historical calibration, task relevance, consistency with causal and temporal context, and agreement with other evidence. The goal is not merely confidence estimation but calibrated confidence: the system's expressed certainty should track the conditions under which its representations are likely to be correct.
+
+Reliability weighting also supports active perception. If the current evidence is inadequate, the system should be able to seek a better view, request clarification, attend to another sound source, inspect a preserved encoder state, or postpone commitment. Thus, uncertainty is not merely attached to a final answer; it can guide the acquisition of new information.
+
+We define the \emph{Active Grounding Requirement}:
+
+\begin{quote}
+When available evidence cannot support a stable interpretation, an integrated system should identify the missing or unreliable information and direct attention or action toward resolving it.
+\end{quote}
+
+This converts multimodal processing from passive fusion into adaptive inquiry.
+
+\subsection{Agreement, Conflict, and Causal Coherence}
+\label{subsec:agreement-conflict-coherence}
+
+Agreement among modalities can strengthen an interpretation, but simple agreement is insufficient. Two channels may repeat the same incorrect source, while apparently conflicting signals may each accurately describe different causes. The system must therefore distinguish statistical similarity from causal coherence.
+
+For each pair of modalities, define a compatibility relation
+
+\begin{equation}
+\kappa_{mn}^{(t)}
+=
+\operatorname{Compat}
+\left(
+z_m^{(t)},z_n^{(t)};
+\tau_{mn},\sigma_{mn},c^{(t)}
+\right),
+\label{eq:crossmodal-compatibility}
+\end{equation}
+
+where $\tau_{mn}$ represents temporal correspondence, $\sigma_{mn}$ spatial correspondence, and $c^{(t)}$ the current causal context. High compatibility indicates that two signals plausibly concern the same event. Low compatibility may indicate noise, deception, asynchronous events, sensor failure, or an incorrect interpretation.
+
+Conflict should not be erased by averaging. It should be represented explicitly:
+
+\begin{equation}
+\Gamma^{(t)}
+=
+\left\{
+(m,n,z_m^{(t)},z_n^{(t)},\kappa_{mn}^{(t)})
+\;\middle|\;
+\kappa_{mn}^{(t)} < \theta
+\right\},
+\label{eq:conflict-set}
+\end{equation}
+
+where $\Gamma^{(t)}$ is the active conflict set and $\theta$ is a context-sensitive compatibility threshold. Retaining $\Gamma^{(t)}$ permits later reasoning to ask why two channels disagreed, which source was more reliable, and what observation could resolve the discrepancy.
+
+This capacity is consciousness-relevant in a functional sense because it allows the system to represent not only a conclusion but also unresolved alternatives. Instead of forcing every perception into a single immediate interpretation, the architecture can maintain competing hypotheses, examine their evidential support, and revise them as new information arrives.
+
+\subsection{Provenance and Epistemic Source Monitoring}
+\label{subsec:provenance-source-monitoring}
+
+A coherent cognitive system should know not only what information it contains but how that information entered the system. Human source-monitoring research distinguishes memories of perceived, imagined, inferred, and externally communicated events and shows that errors in source attribution can produce false beliefs and misremembered experiences \cite{johnson1993source}. Artificial systems face an analogous problem. Text generated internally, retrieved knowledge, user-provided claims, sensor measurements, and model inferences may all appear in similar representational forms even though their evidential status differs.
+
+Each proposition $b_i$ should therefore carry an epistemic record
+
+\begin{equation}
+\begin{aligned}
+\pi_i
+&=
+\Bigl(
+\operatorname{source}_i,
+\operatorname{mode}_i,
+\operatorname{time}_i, \\
+&\qquad
+\operatorname{confidence}_i,
+\operatorname{transformations}_i,
+\operatorname{dependencies}_i
+\Bigr).
+\end{aligned}
+\label{eq:epistemic-provenance}
+\end{equation}
+
+where the source identifies the originating agent or sensor, the mode distinguishes observation from communication, memory, and inference, and the transformation history records how the representation was projected, summarized, or revised. Dependencies identify other propositions upon which the belief relies.
+
+Provenance enables questions such as: Was this object directly observed or mentioned in text? Was this emotional interpretation inferred from facial expression or explicitly reported by the person? Did two agreeing claims originate independently, or did one copy the other? Has a remembered representation changed during repeated summarization? These are not peripheral bookkeeping questions. They are necessary for metacognition, error correction, calibrated trust, and the distinction between experience-like internal states and generated narratives.
+
+We call this the \emph{Epistemic Traceability Principle}: every globally usable belief should remain traceable, at an appropriate level of abstraction, to the representations and transformations that produced it.
+
+\subsection{Temporal and Episodic Binding}
+\label{subsec:temporal-episodic-binding}
+
+Multimodal information becomes cognitively useful when it is organized into events rather than retained as isolated simultaneous signals. Event perception research describes how continuous activity is segmented into structured units that support prediction, comprehension, and memory \cite{zacks2007event}. For an artificial system, temporal binding must determine which visual, auditory, linguistic, affective, and action-related states belong to the same evolving episode.
+
+Let $e_t$ represent the event model active at time $t$. It is updated through
+
+\begin{equation}
+e_t
+=
+\mathcal{B}
+\left(
+e_{t-1},
+\mathcal{E}^{(t)},
+g^{(t)},
+a_{t-1},
+\mathcal{M}_{<t}
+\right),
+\label{eq:event-binding}
+\end{equation}
+
+where $\mathcal{B}$ is an event-binding process, $a_{t-1}$ is the system's preceding action, and $\mathcal{M}_{<t}$ is relevant prior memory. The event model connects current evidence with what preceded it, what the system did, and what consequences followed.
+
+An event boundary occurs when the current evidence can no longer be explained adequately by the active event model:
+
+\begin{equation}
+\operatorname{Boundary}(t)
+=
+\mathbf{1}
+\left[
+\operatorname{PredictionError}(e_{t-1},\mathcal{E}^{(t)}) > \delta
+\right],
+\label{eq:event-boundary}
+\end{equation}
+
+where $\delta$ is an adaptive threshold. At a boundary, the system consolidates the preceding episode and initializes or retrieves a more suitable model. This mechanism supports temporally extended understanding: the system can represent not merely that several observations occurred, but that they formed one event with participants, causes, changes, and consequences.
+
+Episodic binding is also a prerequisite for self-continuity. A system cannot construct a stable account of its own history if its observations, decisions, and outcomes are not linked across time. Multimodal grounding must therefore connect the world model to records of the system's own attention, uncertainty, actions, and revisions.
+
+\subsection{Requirements for a Multimodal Consciousness-Testing Platform}
+\label{subsec:multimodal-platform-requirements}
+
+The foregoing analysis produces seven requirements for a platform intended to investigate consciousness-relevant computation:
+
+\begin{enumerate}
+    \item \textbf{Modality preservation:} retain the rich encoder state produced within each modality.
+    \item \textbf{Semantic accessibility:} project selected content into a shared language-aligned space.
+    \item \textbf{Reliability calibration:} estimate and update the evidential reliability of each contribution.
+    \item \textbf{Conflict preservation:} maintain unresolved disagreement rather than forcing premature fusion.
+    \item \textbf{Epistemic provenance:} track whether information was perceived, communicated, remembered, generated, or inferred.
+    \item \textbf{Temporal binding:} organize multimodal evidence, actions, and outcomes into persistent events.
+    \item \textbf{Active information seeking:} direct attention or action toward evidence capable of resolving uncertainty.
+\end{enumerate}
+
+These requirements define what must be accomplished functionally; they do not prescribe one attention architecture. In particular, a parameter-efficient mechanism that unifies or reuses attention operations across blocks is distinct from the multimodal system in which that mechanism is deployed. Such an attention mechanism may reduce architectural redundancy and make large-scale multimodal interaction more practical, but it should be evaluated separately in terms of parameter efficiency, representational capacity, and downstream behavior.
+
+The larger multimodal architecture must then determine when and how modality-specific states, semantic projections, memories, and self-representations exchange information. This separation preserves the correct relation between mechanism and system: unified attention can serve as an efficient computational component, while the complete AGI-oriented architecture supplies multimodal grounding, temporal continuity, metacognition, and experimental access to consciousness-relevant processes.
+
+The current section therefore establishes the functional specification rather than the final architecture. The next section examines how an integrated world representation becomes connected to a persistent model of the system itself. That transition---from representing the world to representing oneself as an entity perceiving and acting within it---is necessary for metacognitive and temporally continuous forms of observable consciousness.

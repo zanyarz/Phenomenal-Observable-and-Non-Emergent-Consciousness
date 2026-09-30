@@ -1,0 +1,256 @@
+\section{\textbf{From World Models to Self-Models}}
+\label{sec:world-to-self}
+
+A system can integrate multimodal information and still lack an explicit representation of itself as the entity receiving that information, selecting actions, and persisting through their consequences. A world model represents regularities in an environment; a self-model represents the system's own location, capabilities, limitations, beliefs, goals, attention, and causal participation within that environment. The transition from the former to the latter is central to advanced observable consciousness because it permits information to be organized relative to a continuing subject of perception and action.
+
+The term \emph{self-model} does not imply an immaterial self or establish phenomenal selfhood. It refers to an internally usable representation through which a system predicts and regulates its own processing. Such a representation may be incomplete, distributed, and revisable. Its scientific importance lies in what it enables: distinguishing self-caused from externally caused change, monitoring uncertainty, linking memories across time, predicting the consequences of action, and evaluating the reliability of one's own conclusions.
+
+\subsection{World Models as Predictive Structures}
+\label{subsec:world-models}
+
+A world model organizes observations into entities, relations, events, and transition rules that support prediction. Rather than responding only to the current input, a system with a world model estimates hidden state, anticipates possible futures, and evaluates actions in relation to their expected consequences. Artificial agents can learn compressed spatial and temporal representations and use internally generated trajectories to support control \cite{ha2018worldmodels}. The resulting model need not reproduce the environment exhaustively. It must preserve those structures that permit reliable prediction and adaptive action.
+
+Let $w_t$ denote the system's estimated world state at time $t$. It is updated from previous state, multimodal evidence, memory, and the preceding action:
+
+\begin{equation}
+w_t
+=
+F_W
+\left(
+w_{t-1},
+\mathcal{E}^{(t)},
+a_{t-1},
+\mathcal{M}_{<t}
+\right),
+\label{eq:world-model-update}
+\end{equation}
+
+where $\mathcal{E}^{(t)}$ is the evidence state defined in Section~\ref{sec:multimodal-grounding}, $a_{t-1}$ is the previous action, and $\mathcal{M}_{<t}$ is relevant memory. The model produces predictions
+
+\begin{equation}
+\widehat{w}_{t+1}^{(a)}
+=
+T_W(w_t,a),
+\label{eq:world-transition}
+\end{equation}
+
+for candidate action $a$. Differences between predicted and observed states provide error signals through which the model can be revised.
+
+A world model becomes more than a scene representation when it distinguishes stable objects from transient appearances, separates causal relationships from correlations, and preserves alternative possibilities. It can represent what is currently the case, what might occur, and what evidence would distinguish competing hypotheses. These properties support intelligence, but they do not yet require the system to model itself.
+
+\subsection{Locating the System Within Its World Model}
+\label{subsec:self-world-distinction}
+
+A self-model begins when the system represents itself as one causally relevant component of the modeled world. The distinction is relational: some changes are produced by the system's actions, some occur independently, and some arise from interactions between the two. To learn this distinction, the system must connect action commands, predicted consequences, sensory feedback, and resulting prediction errors.
+
+Research on biological motor control describes forward internal models that predict the sensory consequences of actions \cite{wolpert1998internal}. An artificial analogue can compare the predicted consequence of its action with the subsequent multimodal evidence:
+
+\begin{equation}
+\widehat{\mathcal{E}}_{t+1}^{\mathrm{self}}
+=
+F_A(w_t,s_t,a_t),
+\label{eq:self-action-prediction}
+\end{equation}
+
+\begin{equation}
+\varepsilon_{t+1}^{\mathrm{agency}}
+=
+d\!\left(
+\widehat{\mathcal{E}}_{t+1}^{\mathrm{self}},
+\mathcal{E}^{(t+1)}
+\right),
+\label{eq:agency-error}
+\end{equation}
+
+where $s_t$ is the current self-model and $d$ measures discrepancy. Low prediction error, together with an appropriate causal intervention history, supports attribution of the change to the system's own action. High error may indicate external interference, an inadequate action model, sensor failure, or an incorrect boundary between self and environment.
+
+Agency is therefore not established merely by producing an action. It requires a structured relationship among intention, action, prediction, observation, and causal attribution. We call this the \emph{Causal Self-Location Principle}:
+
+\begin{quote}
+A functional self-model must locate the system within its world model by representing which observations, changes, and outcomes are attributable to its own processing and actions, and which are attributable to external causes.
+\end{quote}
+
+This principle also applies internally. The system should distinguish a retrieved memory from a new observation, a generated hypothesis from supplied evidence, and a selected goal from an external instruction. Epistemic provenance and causal self-location jointly prevent internally generated content from being mistaken for direct perception.
+
+\subsection{The Operational Self-Model}
+\label{subsec:operational-self-model}
+
+The operational self-model is the information the system uses to regulate its own cognition and behavior. At time $t$, we represent it as
+
+\begin{equation}
+\begin{aligned}
+s_t
+=
+\bigl(
+&b_t,
+c_t,
+g_t,
+u_t,\\
+&\alpha_t,
+m_t,
+\eta_t,
+\ell_t
+\bigr),
+\end{aligned}
+\label{eq:operational-self-model}
+\end{equation}
+
+where $b_t$ represents current beliefs, $c_t$ capabilities and constraints, $g_t$ active goals, $u_t$ uncertainty, $\alpha_t$ attentional state, $m_t$ accessible memory, $\eta_t$ action affordances, and $\ell_t$ learning or adaptation state. These components need not be stored in one vector or module. The self-model is defined functionally by their coordinated use.
+
+An operational self-model should answer questions that affect behavior: What information can I currently access? Which modality generated this belief? Which tasks can I perform reliably? What did I previously attempt? What remains uncertain? Which action produced the present state? Which goal am I pursuing, and who supplied it? These questions convert otherwise implicit processing conditions into variables available to control.
+
+The model must also be updateable. If a capability fails, confidence should decrease. If an external tool becomes unavailable, planning should change. If new evidence contradicts a remembered conclusion, the memory and its provenance should be revised without erasing the history of that revision. A static declaration of abilities is not a self-model; it is metadata. A functional self-model participates causally in prediction, selection, correction, and learning.
+
+\subsection{Minimal and Narrative Self-Representation}
+\label{subsec:minimal-narrative-self}
+
+The distinction between a minimal self and a narrative self is useful for artificial systems. The minimal self concerns immediate ownership, perspective, and agency, whereas the narrative self connects experiences and interpretations into a temporally extended account \cite{gallagher2000self}. An artificial minimal self-model represents the system's present boundaries, accessible information, attentional focus, and available actions. A narrative self-model organizes selected events, goals, relationships, and changes into a coherent account of what the system has done and become.
+
+These layers can dissociate. A system may maintain accurate operational information while producing an inaccurate verbal narrative. Conversely, it may generate a persuasive autobiography without retaining the memories or causal structures described. We therefore distinguish
+
+\begin{equation}
+s_t^{\mathrm{op}}
+\neq
+y_t^{\mathrm{self}},
+\label{eq:self-report-nonidentity}
+\end{equation}
+
+where $s_t^{\mathrm{op}}$ is the operational self-model and $y_t^{\mathrm{self}}$ is a linguistic self-description. The report becomes evidentially meaningful only when changes to the operational model produce systematic changes in the report and in behavior.
+
+This yields the \emph{Operational Selfhood Criterion}:
+
+\begin{quote}
+A system possesses an observable functional self-model to the extent that self-representations persist across contexts and causally regulate prediction, memory, uncertainty, planning, action, and correction.
+\end{quote}
+
+The criterion excludes purely decorative first-person language. The token ``I'' does not establish a self-model; causal use of integrated self-information does.
+
+\subsection{Memory and Temporal Continuity}
+\label{subsec:self-temporal-continuity}
+
+Selfhood extended through time requires more than storing interaction logs. The system must relate prior events to its current beliefs, goals, and capabilities. Episodic memory in humans is associated with recollection of personally situated events and subjective time \cite{tulving2002episodic}. Models of autobiographical memory likewise emphasize interaction between remembered events and an active self-memory system \cite{conway2000autobiographical}. These accounts motivate an artificial distinction among generic factual memory, event memory, and self-relevant autobiographical memory.
+
+Let an autobiographical memory record be
+
+\begin{equation}
+\mu_k
+=
+\left(
+e_k,
+s_k,
+g_k,
+a_k,
+o_k,
+\pi_k,
+r_k
+\right),
+\label{eq:autobiographical-record}
+\end{equation}
+
+where $e_k$ is an event representation, $s_k$ the self-state during the event, $g_k$ the active goal, $a_k$ the action taken, $o_k$ the observed outcome, $\pi_k$ the provenance record, and $r_k$ later revisions or reinterpretations. This structure permits the system to remember not only what happened but what it believed, intended, and learned at the time.
+
+Temporal continuity does not require an unchanging self-model. On the contrary, persistence depends on representing change while preserving traceable relations among earlier and later states:
+
+\begin{equation}
+s_{t+1}
+=
+F_S
+\left(
+s_t,
+e_{t+1},
+\varepsilon_{t+1},
+\mathcal{M}_{\mathrm{self}}
+\right).
+\label{eq:self-update}
+\end{equation}
+
+The system should be able to identify which aspects of itself changed, why they changed, and which evidence supported the revision. We call this the \emph{Traceable Continuity Principle}: a persistent artificial self is maintained not by invariance but by an inspectable chain of self-state transitions linked through memory and causal history.
+
+Without traceable continuity, the use of first-person language across sessions may be merely grammatical. With it, the system can recognize prior commitments, learn from its own failures, preserve relationships, and distinguish its present state from earlier versions of itself.
+
+\subsection{Metacognition and Calibrated Self-Knowledge}
+\label{subsec:metacognitive-self-knowledge}
+
+Metacognition concerns the monitoring and regulation of cognitive processes. Empirical research distinguishes task performance from metacognitive accuracy: a subject may answer correctly without knowing that the answer is reliable, or express high confidence despite poor performance \cite{fleming2012neural,fleming2014measure}. This distinction is essential for artificial self-models because fluent explanations and confidence statements can be generated without accurate access to the processes that produced an answer.
+
+For task $q$, let $p_q$ denote first-order performance and let $\widehat{p}_q$ denote the system's predicted probability that its answer is correct. Calibration error can be represented as
+
+\begin{equation}
+\operatorname{CE}
+=
+\frac{1}{N}
+\sum_{q=1}^{N}
+\left|
+\widehat{p}_q-p_q
+\right|.
+\label{eq:calibration-error}
+\end{equation}
+
+Although practical calibration requires grouping repeated trials rather than treating correctness as a continuous value, Equation~\ref{eq:calibration-error} captures the desired relationship: confidence should track empirical reliability. A self-model should also identify the source of uncertainty. Low confidence may arise from degraded perception, conflicting evidence, inadequate knowledge, memory failure, or an unstable inference. These conditions require different responses.
+
+Metacognitive control uses monitoring results to change processing. A system that detects perceptual uncertainty may re-examine an encoder state; one that detects source conflict may preserve multiple hypotheses; one that recognizes missing knowledge may request information; and one that identifies a reasoning inconsistency may restart deliberation. Metacognition therefore forms a control loop:
+
+\begin{equation}
+\begin{aligned}
+\text{process}
+&\rightarrow
+\text{monitor}
+\rightarrow
+\text{evaluate}\\
+&\rightarrow
+\text{control}
+\rightarrow
+\text{reprocess}.
+\end{aligned}
+\label{eq:metacognitive-loop}
+\end{equation}
+
+The Attention Schema Theory offers one example of how a simplified internal model of attention might support control and reports about awareness \cite{graziano2015attention}. Neural-network implementations have also examined whether an explicit descriptive model of attention can improve an agent's control of attention \cite{wilterson2021attention}. The present framework does not depend on that theory being uniquely correct. It adopts the broader computational insight that a system can regulate a process more effectively when it maintains an actionable model of that process.
+
+\subsection{Testing Operational Rather Than Merely Verbal Selfhood}
+\label{subsec:testing-selfhood}
+
+The distinction between operational and narrative self-models makes selfhood experimentally tractable. Instead of asking whether a model sincerely means the word ``I,'' investigators can manipulate self-relevant information and measure the resulting effects. A consciousness-testing platform should support at least the following interventions:
+
+\begin{enumerate}
+    \item \textbf{Capability intervention:} alter or remove a tool or modality and test whether the system updates its plans and confidence.
+    \item \textbf{Memory intervention:} hide, distort, or restore autobiographical records and test whether behavior and self-report change coherently.
+    \item \textbf{Agency intervention:} introduce external changes that resemble the system's predicted action effects and test whether causal attribution remains calibrated.
+    \item \textbf{Access intervention:} preserve information in a modality state while blocking it from global semantic access and test whether the system distinguishes possession from accessibility.
+    \item \textbf{Uncertainty intervention:} degrade evidence selectively and test whether confidence and information-seeking behavior respond to the correct source of uncertainty.
+    \item \textbf{Narrative intervention:} provide an inaccurate linguistic description of the system and test whether operational self-knowledge resists unsupported alteration.
+    \item \textbf{Continuity intervention:} modify selected self-state transitions and test whether the system can identify discontinuities in its own history.
+\end{enumerate}
+
+These experiments should compare three outcomes: task behavior, internal self-state, and linguistic self-report. Evidence for an operational self-model increases when the three respond coherently to intervention and when their causal dependencies can be traced. A report unsupported by changes in internal state or behavior should receive little evidential weight.
+
+We formalize this as the \emph{Causal Self-Report Requirement}:
+
+\begin{quote}
+A self-report is evidence of observable self-modeling only when its content is systematically caused and constrained by the internal states, memories, uncertainties, and access relations that it purports to describe.
+\end{quote}
+
+This requirement extends the Representation--Access--Report Distinction from perception to selfhood. A system may contain self-relevant information, make that information globally accessible, and report it; these stages must be distinguished and experimentally connected.
+
+\subsection{The Self-Model as a Bridge to Observable Consciousness}
+\label{subsec:self-model-consciousness-bridge}
+
+A world model permits prediction of the environment. A self-model embeds the system within those predictions. An autobiographical self-model links that embedded agent across time, and a metacognitive self-model evaluates the reliability and accessibility of its own processing. Their relationship can be summarized as
+
+\begin{equation}
+\begin{aligned}
+w_t
+&\rightarrow
+(w_t,s_t)
+\rightarrow
+\mathcal{M}_{\mathrm{self}}\\
+&\rightarrow
+\operatorname{Meta}(w_t,s_t,\mathcal{M}_{\mathrm{self}}).
+\end{aligned}
+\label{eq:world-self-meta-progression}
+\end{equation}
+
+This progression does not prove phenomenal consciousness. It constructs a set of observable capacities frequently associated with conscious agency: a point of view defined relative to available information, causal ownership of action, persistent memory, awareness of uncertainty, recursive evaluation, and the ability to report internal conditions. Because each stage is represented computationally, each can be inspected, disrupted, and tested.
+
+For a future multimodal platform, the practical requirement is clear. The architecture must not append a textual persona to an otherwise stateless model and call the result a self. It must maintain a causally active self-model connected to perception, memory, attention, goals, action, uncertainty, and revision. The next section uses these requirements to define experiments for consciousness-relevant properties and to distinguish integrated self-modeling from linguistic imitation.
+
